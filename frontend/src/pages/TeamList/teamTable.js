@@ -21,32 +21,6 @@ class TeamTable extends Component {
       .catch((err) => console.log(err));
   };
 
-	renderItems = () => {
-		console.log(this.state);
-		return 
-			this.state.teamList.map((team) => (
-				<tr>
-					key={team.id}
-				>
-						<td>
-							{team.name}
-						</td>
-						<td>
-							{team.bracket_type}
-						</td>
-						<td>
-							{team.captain_name}
-						</td>
-						<td>
-							{team.interpreting_requested}
-						</td>
-						<td>
-							{team.status}
-						</td>
-				</tr>
-			));
-  };
-
 	render() {
 		return (
 				<Table
@@ -72,7 +46,27 @@ class TeamTable extends Component {
 					</tr>
 				</thead>
 				<tbody>
-					{this.renderItems()}
+					{this.state.teamList.map((team) => (
+						<tr
+							key={team.id}
+						>
+								<td>
+									{team.name}
+								</td>
+								<td>
+									{team.bracket_type}
+								</td>
+								<td>
+									{team.captain_name}
+								</td>
+								<td>
+									{team.interpreting_requested}
+								</td>
+								<td>
+									{team.status}
+								</td>
+						</tr>
+					))}
 				</tbody>
 			</Table>
 		);
