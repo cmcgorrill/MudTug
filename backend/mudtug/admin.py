@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Team
+from .models import Team, Pit
 
 class TeamAdmin(admin.ModelAdmin):
     class Meta:
@@ -8,3 +8,10 @@ class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'bracket_type', 'captain_name', 'captain_email', 'interpreting_requested','team_status')
 
 admin.site.register(Team, TeamAdmin)
+
+class PitAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Pit
+    list_display = ('name', 'team1', 'team2')
+
+admin.site.register(Pit, PitAdmin)

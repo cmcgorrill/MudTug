@@ -5,6 +5,7 @@ from MudTug import views
 
 router = routers.DefaultRouter()
 router.register(r'teams', views.TeamView, 'team')
+router.register(r'pits', views.PitView, 'pit')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

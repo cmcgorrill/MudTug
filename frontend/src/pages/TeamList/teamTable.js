@@ -17,7 +17,10 @@ class TeamTable extends Component {
   refreshList = () => {
     axios
       .get("/api/teams/")
-      .then((res) => this.setState({ teamList: res.data }))
+      .then((res) => {
+				this.setState({ teamList: res.data });
+				console.log(res.data);
+			})
       .catch((err) => console.log(err));
   };
 
@@ -60,10 +63,10 @@ class TeamTable extends Component {
 									{team.captain_name}
 								</td>
 								<td>
-									{team.interpreting_requested}
+									{team.interpreting_requested ? 'YES' : ''}
 								</td>
 								<td>
-									{team.status}
+									{team.team_status}
 								</td>
 						</tr>
 					))}

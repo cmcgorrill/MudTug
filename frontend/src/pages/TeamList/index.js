@@ -17,7 +17,7 @@ class TeamsList extends Component {
                 <button
                   className="btn btn-primary"
                 >
-                  Add team
+                  Register new team
                 </button>
               </div>
                <TeamTable />
