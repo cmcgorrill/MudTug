@@ -3,9 +3,6 @@ import React, { Component } from "react";
 import TeamTable from "./teamTable.js"
 
 class TeamsList extends Component {
-  constructor(props) {
-    super(props);
-  }
     
   render() {
     return (

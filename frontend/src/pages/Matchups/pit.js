@@ -1,8 +1,7 @@
 
 import React, { Component } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 import Queue from "./queue.js"
+import Matchup from "./matchup.js"
 
 class Pit extends Component {
   constructor(props) {
@@ -14,28 +13,13 @@ class Pit extends Component {
 		}
   }
 	
-	renderMatchup = () => {
-		return this.state.matchedTeams.map((team) => (
-				<ListGroupItem key={team.id}>
-					<span>
-						{team.name}
-					</span>
-					<span style={{ float: "right" }}>
-						{team.interpreting_requested ? <FaAmericanSignLanguageInterpreting /> : ''}
-					</span>
-				</ListGroupItem>
-			));
-	}
-	
   render() {
     return (
 			<div className="col-md-4 col-sm-10 mx-auto p-0">
 				<div className="card pits-card p-3">
 					<div className="mb-4">
 						<h3>{this.state.pit.name}</h3>
-						<ListGroup>
-							{this.renderMatchup()}
-						</ListGroup>
+						<Matchup teams={this.state.matchedTeams} refresh={this.props.refresh}/>
 					</div>
 				</div>
 				<div>

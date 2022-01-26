@@ -29,8 +29,9 @@ class Team(models.Model):
     interpreting_requested = models.BooleanField(default=False)
     interpreting_requested.label = 'Interpreting Services Requested'
     team_status = models.CharField(max_length=20, choices=TeamStatus.choices, default=TeamStatus.REGISTERED)
-    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-		
+    victories = models.IntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Pit(models.Model):
     
     def __unicode__(self):

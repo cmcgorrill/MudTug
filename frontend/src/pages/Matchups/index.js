@@ -6,20 +6,21 @@ class Matchups extends Component {
   constructor(props) {
     super(props);
 		this.state = {
-      allTeams: [],
       maleQueue: [],
       femaleQueue: [],
       coedQueue: [],
 			pits: [],
+			teamsRemaining: 0,
 		}
   }
 	
 	componentDidMount() {
-    this.fetchTeams();
-    this.fetchPits();
-  }
+		this.fetchTeams();
+		this.fetchPits();
+	}
 	
 	fetchTeams = () => {
+		console.log("fetch teams")
     axios
       .get("/api/teams/")
       .then((res) => this.filterTeams(res.data))
@@ -38,34 +39,34 @@ class Matchups extends Component {
 
 	//Queue of teams from each bracket
 	filterTeams = (allTeams) => {
-		this.setState({ allTeams: allTeams });
-		var activeTeams = allTeams.filter( (team) => team.team_status === "Active" );
-		//var activeTeams = allTeams;
+		var activeTeams = allTeams.filter((team) => team.team_status === "Active" ).sort(function(a,b){
+			return new Date(a.updated_at) - new Date(b.updated_at);
+		});
 		var maleBracket = activeTeams.filter( (team) => team.bracket_type === "Male");
 		var femaleBracket = activeTeams.filter( (team) => team.bracket_type === "Female");
 		var coedBracket = activeTeams.filter( (team) => team.bracket_type === "Coed");
 		
-		//sort by time made active
-		this.setState({ maleQueue: maleBracket }); 
-		this.setState({ femaleQueue: femaleBracket }); 
-		this.setState({ coedQueue: coedBracket }); 
-		
-		console.log(this.state.maleQueue);
-		console.log(this.state.femaleQueue);
-		console.log(this.state.coedQueue);
+		console.log(maleBracket.length);
+		console.log(femaleBracket.length);
+		console.log(coedBracket.length);
+		this.setState({ maleQueue: maleBracket, 
+										femaleQueue: femaleBracket,
+									 	coedQueue: coedBracket,
+									 	teamsRemaining: activeTeams.length
+									}); 
 	};
 	
 	
 	//One pit for each bracket, Male, Female, Coed
-	renderPits = (pits) => {
+	renderPits = () => {
 		return this.state.pits.map(
 			(pit) => {
 				if(pit.bracket_type === "Male"){
-						return <Pit key={pit.id} queue={this.state.maleQueue} pit={pit}/>
+						return <Pit key={this.state.maleQueue[0].id} queue={this.state.maleQueue} pit={pit} refresh={this.fetchTeams}/>
 				} else if (pit.bracket_type === "Female"){
-						return <Pit key={pit.id} queue={this.state.femaleQueue} pit={pit}/>
-				} else if (pit.bracket_type === "Coed") {
-          return <Pit key={pit.id} queue={this.state.coedQueue} pit={pit}/>
+						return <Pit key={this.state.femaleQueue[0].id} queue={this.state.femaleQueue} pit={pit} refresh={this.fetchTeams}/>
+				} else {
+          	return <Pit key={this.state.coedQueue[0].id} queue={this.state.coedQueue} pit={pit} refresh={this.fetchTeams}/>
 				}
 			}
 		)
@@ -74,6 +75,9 @@ class Matchups extends Component {
   render() {
     return (
       <main className="container">
+        <div className="row">
+					<h4>Teams Remaining: {this.state.teamsRemaining}</h4>
+				</div>
         <div className="row">
 					{this.renderPits()}
         </div>

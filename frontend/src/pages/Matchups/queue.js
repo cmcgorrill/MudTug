@@ -12,7 +12,8 @@ class Queue extends Component {
   }
 	
 	renderItems = () => {
-		return this.state.queue.map((team) => (
+		let queue = [...this.state.queue];
+		return queue.map((team) => (
 			<ListGroupItem key={team.id}>
 				<span>
 					{team.name}

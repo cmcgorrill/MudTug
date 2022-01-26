@@ -4,7 +4,7 @@ from .models import Team, Pit
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('id', 'name', 'bracket_type', 'captain_name', 'captain_email', 'interpreting_requested','team_status')
+        fields = ('id', 'name', 'bracket_type', 'captain_name', 'captain_email', 'interpreting_requested','team_status', 'victories', 'updated_at')
 				
 class PitSerializer(serializers.ModelSerializer):
     class Meta:
