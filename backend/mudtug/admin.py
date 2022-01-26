@@ -12,6 +12,6 @@ admin.site.register(Team, TeamAdmin)
 class PitAdmin(admin.ModelAdmin):
     class Meta:
         model = Pit
-    list_display = ('name', 'team1', 'team2')
+    list_display = ('name', 'bracket_type', 'team1', 'team2')
 
 admin.site.register(Pit, PitAdmin)

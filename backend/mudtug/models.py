@@ -37,6 +37,7 @@ class Pit(models.Model):
         return self.name + ""
 
     name = models.CharField(max_length=120)
+    bracket_type = models.CharField(max_length=20, choices=Brackets.choices, default=Brackets.MALE)
     team1 = models.ForeignKey(
     	Team,
     	on_delete=models.CASCADE,

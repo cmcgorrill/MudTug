@@ -9,4 +9,4 @@ class TeamSerializer(serializers.ModelSerializer):
 class PitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pit
-        fields = ('id', 'name', 'team1', 'team2')
+        fields = ('id', 'name', 'bracket_type', 'team1', 'team2')
