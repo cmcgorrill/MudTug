@@ -49,12 +49,12 @@ Django app: http://localhost:8000/
 
 ## General Requirements
  - Register Teams
- -- Separate competitions for men's, women's, and coed teams.
- -- Team captain contact info.
- -- Identify teams that require interpreting services for HoH and Deaf team memebers.
+ 		- Separate competitions for men's, women's, and coed teams.
+ 		- Team captain contact info.
+ 		- Identify teams that require interpreting services for HoH and Deaf team memebers.
  - Mark teams that have "checked in" on the day of the event.
  - Teams that have checked in should be added to a queue for their bracket. 
- -- Queue should be sorted based on time of check in/last match won, first teams to arrive are the first to tug.
+ 		- Queue should be sorted based on time of check in/last match won, first teams to arrive are the first to tug.
  - Assign 2 teams to a pit to match up at a time.
  - Mark winner of a matchup.
  - Iterate through each queue until a winner is determined.
@@ -62,10 +62,10 @@ Django app: http://localhost:8000/
 ## v2
  - Landing page
  - Add/remove pits
- -- generalize the queue to be spread across all pit instead of designating them to a specific bracket
+ 		- generalize the queue to be spread across all pit instead of designating them to a specific bracket
  - Team info page
- -- Team record
- -- Spot in line
+ 		- Team record
+ 		- Spot in line
  
  ## v3
  - User authentication for event management
