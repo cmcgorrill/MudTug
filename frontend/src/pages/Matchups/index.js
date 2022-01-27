@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Pit from "./pit.js"
 import axios from "axios";
 
@@ -74,14 +76,14 @@ class Matchups extends Component {
 	
   render() {
     return (
-      <main className="container">
-        <div className="row">
+      <Container>
+        <Row>
 					<h4>Teams Remaining: {this.state.teamsRemaining}</h4>
-				</div>
-        <div className="row">
+				</Row>
+        <Row>
 					{this.renderPits()}
-        </div>
-      </main>
+        </Row>
+      </Container>
     );
   }
 }

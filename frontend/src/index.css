@@ -16,6 +16,10 @@ code {
 	background-color: #79c7c5;
 }
 
-tr.matchup-team{
+tr.matchup-team {
 	background-color: #EBEAEB;
+}
+
+.row {
+	padding: 20px 0px 0px 0px;
 }

@@ -33,17 +33,10 @@ class TeamsList extends Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col>
+        <Row className="justify-content-md-center">
+          <Col xs={12} md={8}>
 						<Form.Control type="text" placeholder="Search by team name" onChange={event => this.refreshList(event.target.value)} value={this.state.keyword}/>
           </Col>
-          <Col>
-						<button
-							className="btn btn-primary"
-						>
-							Register new team
-						</button>
-					</Col>
         </Row>
         <Row>
           <Col>
