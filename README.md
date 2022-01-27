@@ -48,7 +48,7 @@ Django app: http://localhost:8000/
 6. Rinse, repeat
 
 ## General Requirements
- - Register Teams (backend admin okay for now).
+ - Register Teams
  -- Separate competitions for men's, women's, and coed teams.
  -- Team captain contact info.
  -- Identify teams that require interpreting services for HoH and Deaf team memebers.
