@@ -1,28 +1,22 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 class TeamTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      teamList: [],
+      teams: [],
     };
   }
-    
-  componentDidMount() {
-    this.refreshList();
-  }
-
-  refreshList = () => {
-    axios
-      .get("/api/teams/")
-      .then((res) => {
-				this.setState({ teamList: res.data });
-				console.log(res.data);
-			})
-      .catch((err) => console.log(err));
-  };
+	
+	teamCheckIn = (team) => {
+		team.team_status = "Active";
+		axios.put("api/teams/"+team.id+"/", team)
+			.then(res => this.props.refresh(''))
+			.catch((err) => console.log(err));
+	}
 
 	render() {
 		return (
@@ -49,7 +43,7 @@ class TeamTable extends Component {
 					</tr>
 				</thead>
 				<tbody>
-					{this.state.teamList.map((team) => (
+					{this.props.teams.map((team) => (
 						<tr
 							key={team.id}
 						>
@@ -67,6 +61,11 @@ class TeamTable extends Component {
 								</td>
 								<td>
 									{team.team_status}
+								</td>
+								<td>
+									{team.team_status === "Registered" ? (
+        						<Button onClick={() => this.teamCheckIn(team)}>Check In</Button>
+      						) : ""}						
 								</td>
 						</tr>
 					))}

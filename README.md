@@ -4,8 +4,8 @@
     - Add Teams
     ~~View Teams~~
  - Check in
-    - View Teams/Search
-    - Change team status to active
+    - ~~View Teams/Search~~
+    - ~~Change team status to active~~
  - Event Day
     - ~~Build queues with active teams~~
     - ~~Build match ups~~
@@ -18,9 +18,8 @@
 - Landing page
 - ~~View teams~~
 - Team registration page
-- Team check in
+- ~~Team check in~~
 - ~~Event management/mud pits~~
-- Team info
 
 ## Running the Event
 1. First two teams in queue are added to pit

@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import ListGroup  from "react-bootstrap/ListGroup";
 import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 
 class Queue extends Component {
@@ -14,14 +14,14 @@ class Queue extends Component {
 	renderItems = () => {
 		let queue = [...this.state.queue];
 		return queue.map((team) => (
-			<ListGroupItem key={team.id}>
+			<ListGroup.Item key={team.id}>
 				<span>
 					{team.name}
 				</span>
 				<span style={{ float: "right" }}>
 					{team.interpreting_requested ? <FaAmericanSignLanguageInterpreting /> : ''}
 				</span>
-			</ListGroupItem>
+			</ListGroup.Item>
 		));
 	}
 	

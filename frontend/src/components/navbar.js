@@ -1,33 +1,20 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 function MyNavbar() {
   return (
-		<Navbar
-			color="light"
-			expand="md"
-			light
-		>
-			<NavbarBrand>
-				MudTug
-			</NavbarBrand>
-			<NavbarToggler onClick={function noRefCheck(){}} />
-			<Collapse navbar>
-				<Nav
-					className="me-auto"
-					navbar
-				>
-					<NavItem>
-						<NavLink href="/teams">
-							Teams
-						</NavLink>
-					</NavItem>
-					<NavItem>
-						<NavLink href="/matchups">
-							Matchups
-						</NavLink>
-					</NavItem>
-				</Nav>
-			</Collapse>
+		<Navbar bg="light" expand="lg">
+			<Container>
+				<Navbar.Brand href="/">MudTug</Navbar.Brand>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav className="ms-auto">
+						<Nav.Link href="/teams">Team Management</Nav.Link>
+						<Nav.Link href="/matchups">Event Management</Nav.Link>
+					</Nav>
+				</Navbar.Collapse>
+			</Container>
 		</Navbar>
   );
 }

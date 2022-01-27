@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
-import { Table, Button } from "reactstrap";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 import axios from "axios";
 
@@ -38,7 +39,7 @@ class Matchup extends Component {
 						{team.name}
 					</td>
 					<td>
-						<Button style={{float: "center"}} onClick={() => this.markWinner(team)}>
+						<Button  variant="outline-success" style={{float: "center"}} onClick={() => this.markWinner(team)}>
 							Winner
 						</Button>
 					</td>
