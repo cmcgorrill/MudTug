@@ -12,7 +12,9 @@ In `./backend/` run:
 - `python manage.py migrate`
 - `python manage.py runserver`
 
-In `./frontend/` run `npm start`.
+In `./frontend/` run:
+- `npm install`
+- `npm start`
 
 React app: http://localhost:3000/
 Django app: http://localhost:8000/
