@@ -9,13 +9,12 @@
  - Event Day
     - ~~Build queues with active teams~~
     - ~~Build match ups~~
-        - Assign match ups to mud pits
+        - ~~Assign match ups to mud pits~~
     - ~~Run the match ups~~
-        - Winning Team back in queue
-        - Losing Team marked as inactive
+        - ~~Winning Team back in queue~~
+        - ~~Losing Team marked as inactive~~
         
 ## Pages
-- Landing page
 - ~~View teams~~
 - Team registration page
 - ~~Team check in~~
@@ -40,3 +39,19 @@
  - Assign 2 teams to a pit to match up at a time.
  - Mark winner of a matchup.
  - Iterate through each queue until a winner is determined.
+ 
+## v2
+ - Landing page
+ - Add/remove pits
+ -- generalize the queue to be spread across all pit instead of designating them to a specific bracket
+ - Team info page
+ -- Team record
+ -- Spot in line
+ 
+ ## v3
+ - User authentication for event management
+ - Estimate wait time for teams before their next matchup
+ - Async page updates to handle multiple screen displays at the event
+ - Accept team payment during registration
+ 
+ 
