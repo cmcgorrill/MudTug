@@ -1,8 +1,24 @@
 # MudTug
+## Running the app
+Requirements:
+- Python3
+- pipenv
+- npm/Node.js
+
+Make sure python, pipenv, and npm are installed. Activate a virtual environment for the backend with `pipenv shell`. 
+In `./backend/` run:
+- `python manage.py makemigrations`
+- `python manage.py migrate`
+- `python manage.py runserver`
+In `./frontend/` run `npm start`.
+
+React app: http://localhost:3000/
+Django app: http://localhost:8000/
+
 ## TODOs
- - Registration
-    - Add Teams
-    ~~View Teams~~
+ - ~~Registration~~
+    - ~~Add Teams~~
+    - ~~View Teams~~
  - ~~Check in~~
     - ~~View Teams/Search~~
     - ~~Change team status to active~~
@@ -16,7 +32,7 @@
         
 ## Pages
 - ~~View teams/team check in~~
-- Team registration page
+- ~~Team registration page~~
 - ~~Event management/mud pits~~
 
 ## Running the Event
