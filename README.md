@@ -6,10 +6,12 @@ Requirements:
 - npm/Node.js
 
 Make sure python, pipenv, and npm are installed. Activate a virtual environment for the backend with `pipenv shell`. 
+
 In `./backend/` run:
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py runserver`
+
 In `./frontend/` run `npm start`.
 
 React app: http://localhost:3000/
