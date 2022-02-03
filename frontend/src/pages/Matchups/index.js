@@ -51,11 +51,12 @@ class Matchups extends Component {
 		console.log(maleBracket.length);
 		console.log(femaleBracket.length);
 		console.log(coedBracket.length);
-		this.setState({ maleQueue: maleBracket, 
-										femaleQueue: femaleBracket,
-										coedQueue: coedBracket,
-										teamsRemaining: activeTeams.length
-									}); 
+		this.setState({ 
+			maleQueue: maleBracket, 
+			femaleQueue: femaleBracket, 
+			coedQueue: coedBracket, 
+			teamsRemaining: activeTeams.length
+		}); 
 	};
 	
 	
