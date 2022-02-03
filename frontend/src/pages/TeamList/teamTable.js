@@ -1,20 +1,28 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 class TeamTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      teams: [],
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			teams: [],
+		};
+	}
+
+	static get propTypes() { 
+		return { 
+			teams: PropTypes.array, 
+			refresh: PropTypes.func 
+		}; 
+	}
 	
 	teamCheckIn = (team) => {
 		team.team_status = "Active";
 		axios.put("api/teams/"+team.id+"/", team)
-			.then(res => this.props.refresh(''))
+			.then(this.props.refresh(''))
 			.catch((err) => console.log(err));
 	}
 
@@ -64,8 +72,8 @@ class TeamTable extends Component {
 								</td>
 								<td>
 									{team.team_status === "Registered" ? (
-        						<Button onClick={() => this.teamCheckIn(team)}>Check In</Button>
-      						) : ""}						
+										<Button onClick={() => this.teamCheckIn(team)}>Check In</Button>
+									) : ""}						
 								</td>
 						</tr>
 					))}

@@ -5,16 +5,16 @@ import Pit from "./pit.js"
 import axios from "axios";
 
 class Matchups extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 		this.state = {
-      maleQueue: [],
-      femaleQueue: [],
-      coedQueue: [],
+			maleQueue: [],
+			femaleQueue: [],
+			coedQueue: [],
 			pits: [],
 			teamsRemaining: 0,
 		}
-  }
+	}
 	
 	componentDidMount() {
 		this.fetchTeams();
@@ -23,21 +23,21 @@ class Matchups extends Component {
 	
 	fetchTeams = () => {
 		console.log("fetch teams")
-    axios
-      .get("/api/teams/")
-      .then((res) => this.filterTeams(res.data))
-      .catch((err) => console.log(err));
-  };
+		axios
+			.get("/api/teams/")
+			.then((res) => this.filterTeams(res.data))
+			.catch((err) => console.log(err));
+	};
 
 	fetchPits = () => {
-    axios
-      .get("/api/pits/")
-      .then((res) => {
+		axios
+			.get("/api/pits/")
+			.then((res) => {
 				this.setState({ pits: res.data});
 				console.log(res.data);
 			})
-      .catch((err) => console.log(err));
-  };
+			.catch((err) => console.log(err));
+	};
 
 	//Queue of teams from each bracket
 	filterTeams = (allTeams) => {
@@ -53,8 +53,8 @@ class Matchups extends Component {
 		console.log(coedBracket.length);
 		this.setState({ maleQueue: maleBracket, 
 										femaleQueue: femaleBracket,
-									 	coedQueue: coedBracket,
-									 	teamsRemaining: activeTeams.length
+										coedQueue: coedBracket,
+										teamsRemaining: activeTeams.length
 									}); 
 	};
 	
@@ -68,24 +68,24 @@ class Matchups extends Component {
 				} else if (pit.bracket_type === "Female"){
 						return <Pit key={this.state.femaleQueue[0].id} queue={this.state.femaleQueue} pit={pit} refresh={this.fetchTeams}/>
 				} else {
-          	return <Pit key={this.state.coedQueue[0].id} queue={this.state.coedQueue} pit={pit} refresh={this.fetchTeams}/>
+						return <Pit key={this.state.coedQueue[0].id} queue={this.state.coedQueue} pit={pit} refresh={this.fetchTeams}/>
 				}
 			}
 		)
 	}
 	
-  render() {
-    return (
-      <Container>
-        <Row>
+	render() {
+		return (
+			<Container>
+				<Row>
 					<h4>Teams Remaining: {this.state.teamsRemaining}</h4>
 				</Row>
-        <Row>
+				<Row>
 					{this.renderPits()}
-        </Row>
-      </Container>
-    );
-  }
+				</Row>
+			</Container>
+		);
+	}
 }
 
 export default Matchups;

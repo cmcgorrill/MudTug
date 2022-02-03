@@ -1,15 +1,22 @@
 
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import ListGroup  from "react-bootstrap/ListGroup";
 import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 
 class Queue extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 		this.state = {
 			queue: props.queue,
 		}
-  }
+	}
+
+	static get propTypes() { 
+		return { 
+			queue: PropTypes.object,
+		}; 
+	}
 	
 	renderItems = () => {
 		let queue = [...this.state.queue];
@@ -25,13 +32,13 @@ class Queue extends Component {
 		));
 	}
 	
-  render() {
-    return (
+	render() {
+		return (
 			<ListGroup>
-			 {this.renderItems()}
+				{this.renderItems()}
 			</ListGroup>
-    );
-  }
+		);
+	}
 }
 
 export default Queue;

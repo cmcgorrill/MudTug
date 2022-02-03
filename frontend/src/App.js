@@ -4,13 +4,13 @@ import MyNavbar from './components/navbar';
 import history from './services/history';
 import Routes from './routes';
 function App() {
-  return (
+	return (
 		<div>
 			<MyNavbar />
-    	<Router history={history}>
-      	<Routes />
-    	</Router>
+			<Router history={history}>
+				<Routes />
+			</Router>
 		</div>
-  );
+	);
 }
 export default App;

@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form"
 import Container from "react-bootstrap/Container"
@@ -9,43 +8,43 @@ import axios from "axios";
 
 class TeamsList extends Component {
 	constructor(props) {
-    super(props);
-    this.state = {
-      teams: [],
-    };
-  }
+		super(props);
+		this.state = {
+			teams: [],
+		};
+	}
 	
 	componentDidMount() {
-    this.refreshList('');
-  }
+		this.refreshList('');
+	}
 	
-  refreshList = (keyword) => {
-    axios
-      .get("/api/teams/")
-      .then((res) => {
+	refreshList = (keyword) => {
+		axios
+			.get("/api/teams/")
+			.then((res) => {
 				let filteredTeams = res.data.filter((team) => team.name.toLowerCase().includes(keyword.toLowerCase()))
 				this.setState({ teams: filteredTeams });
 				console.log(res.data);
 			})
-      .catch((err) => console.log(err));
-  };
+			.catch((err) => console.log(err));
+	};
 	
-  render() {
-    return (
-      <Container>
-        <Row className="justify-content-md-center">
-          <Col xs={12} md={8}>
+	render() {
+		return (
+			<Container>
+				<Row className="justify-content-md-center">
+					<Col xs={12} md={8}>
 						<Form.Control type="text" placeholder="Search by team name" onChange={event => this.refreshList(event.target.value)} value={this.state.keyword}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-						 <TeamTable teams={this.state.teams} refresh={this.refreshList}/>
 					</Col>
 				</Row>
-      </Container>
-    );
-  }
+				<Row>
+					<Col>
+						<TeamTable teams={this.state.teams} refresh={this.refreshList}/>
+					</Col>
+				</Row>
+			</Container>
+		);
+	}
 }
 
 export default TeamsList;

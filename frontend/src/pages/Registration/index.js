@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -9,28 +10,34 @@ import axios from "axios";
 
 class Registration extends Component {
 	constructor(props) {
-    super(props);
+		super(props);
 		this.state = {
-      validated: false,
+			validated: false,
 		}
-  }
+	}
+
+	static get propTypes() { 
+		return { 
+			history: PropTypes.array,
+		}; 
+	}
 	
 	validateTeamData = (event) => {
 		if (event.target.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    	this.setState({ validated: true });
+			event.preventDefault();
+			event.stopPropagation();
+			this.setState({ validated: true });
 			return false
-    }
+		}
 
-    this.setState({ validated: true });
+		this.setState({ validated: true });
 		return true;
 	}
 	
 	handleSubmit = (event) => {
 		this.validateTeamData(event);
 		
-    let form = event.target;
+		let form = event.target;
 		let teamName = form[0].value;
 		let bracket = form[1].value;
 		let captainName = form[2].value;
@@ -50,17 +57,17 @@ class Registration extends Component {
 		.then(res => console.log(res.data))
 		.catch((err) => console.log(err));
 
-    event.preventDefault();
+		event.preventDefault();
 		
 		this.props.history.push('/teams');
 		alert(teamName + " added successfully.")
-  }
+	}
 	
-  render() {
-    return (
-      <Container>
-        <Row className="justify-content-md-center">
-        	<Col xs={12} md={8}>
+	render() {
+		return (
+			<Container>
+				<Row className="justify-content-md-center">
+					<Col xs={12} md={8}>
 						<Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
 							<Form.Group className="mb-3">
 								<Form.Label>Team Name</Form.Label>
@@ -74,8 +81,8 @@ class Registration extends Component {
 								<Form.Label>Bracket</Form.Label>
 								<Form.Select>
 									<option value="Coed">Coed</option>
-									<option value="Male">Men's</option>
-									<option value="Female">Women's</option>
+									<option value="Male">Men`&apos;`s</option>
+									<option value="Female">Women`&apos;`s</option>
 								</Form.Select>
 								<Form.Text className="error" id="teamNameError">
 									Coed teams must have at least 2 members of each gender.
@@ -86,7 +93,7 @@ class Registration extends Component {
 								<Form.Label>Captain Name</Form.Label>
 								<Form.Control required type="text" placeholder="Captain Name" />
 								<Form.Control.Feedback type="invalid">
-									Please enter the team captain's name.
+									Please enter the team captain`&apos;`s name.
 								</Form.Control.Feedback>
 							</Form.Group>
 
@@ -94,7 +101,7 @@ class Registration extends Component {
 								<Form.Label>Captain Email</Form.Label>
 								<Form.Control required type="email" placeholder="Captain email" />
 								<Form.Control.Feedback type="invalid">
-									Please enter the team captain's email.
+									Please enter the team captain`&apos;`s email.
 								</Form.Control.Feedback>
 							</Form.Group>
 			
@@ -108,9 +115,9 @@ class Registration extends Component {
 						</Form>
 					</Col>
 				</Row>
-      </Container>
-    );
-  }
+			</Container>
+		);
+	}
 }
 
 export default withRouter(Registration);

@@ -1,12 +1,19 @@
 
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 import axios from "axios";
 
 class Matchup extends Component {
-	
+	static get propTypes() { 
+		return { 
+			teams: PropTypes.array, 
+			refresh: PropTypes.func 
+		}; 
+	}
+
 	markWinner = (team) => {
 		//dosomething to update the team -- count victories?
 		let winningTeam = {...team};
@@ -27,12 +34,12 @@ class Matchup extends Component {
 	markLoser = (team) => {
 		team.team_status = "Inactive";
 		axios.put("api/teams/"+team.id+"/", team)
-			.then(res => this.props.refresh())
+			.then(this.props.refresh())
 			.catch((err) => console.log(err));
 	}
 	
 	renderMatchup = () => {
-		return this.props.teams.map((team, index) => {
+		return this.props.teams.map((team) => {
 				return (
 					<tr key={team.id} className="matchup-team">
 					<td>
@@ -53,15 +60,15 @@ class Matchup extends Component {
 		});
 	}
 	
-  render() {
-    return (
+	render() {
+		return (
 			<Table>
 				<tbody>
 					{this.renderMatchup()}
 				</tbody>
 			</Table>
-    );
-  }
+		);
+	}
 }
 
 export default Matchup;
